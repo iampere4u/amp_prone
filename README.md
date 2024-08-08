@@ -3,7 +3,7 @@
 Just Drag and Drop!
 
 ## 1. Installation
-amp_prone works as a standalone [here](https://github.com/iampere4u/amp_prone). 
+amp_prone works as a standalone!
 
 To install amp_prone:
 - Download the resource
