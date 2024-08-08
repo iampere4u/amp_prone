@@ -2,6 +2,8 @@
 
 Just Drag and Drop!
 
+`Keybind L`
+
 ## 1. Installation
 amp_prone works as a standalone!
 
