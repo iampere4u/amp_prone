@@ -38,22 +38,18 @@ function SetProned()
     TaskPlayAnimAdvanced(PlayerPedId(), "mech_crawl@base", "onfront_fwd", GetEntityCoords(PlayerPedId()), 0.0, 0.0, GetEntityHeading(PlayerPedId()), 1.0, 1.0, 1.0, 2, 1.0, 0, 0)
 end
 
-
 function ProneMovement()
     if proned then
         ped = PlayerPedId()
-        DisableControlAction(0, 0xB2F377E8)
-        DisableControlAction(0, 0x8FFC75D6)
-        DisableControlAction(0, 0xF3830D8E)
+        DisableControlAction(0, 0xB2F377E8) -- Disable jump
+        DisableControlAction(0, 0x8FFC75D6) -- Disable sprint
+        DisableControlAction(0, 0xF3830D8E) -- Disable melee attack
+
         if IsEntityInWater(ped) then
             ClearPedTasks(ped)
             proned = false
         end
-        if IsControlPressed(0, 0x8FD015D8) or IsControlPressed(0, 0xD27782E3) then
-            DisablePlayerFiring(ped, true)
-         elseif IsControlJustReleased(0, 0x8FD015D8) or IsControlJustReleased(0, 0xD27782E3) then
-             DisablePlayerFiring(ped, false)
-         end
+
         if IsControlJustPressed(0, 0x8FD015D8) and not movefwd then
             movefwd = true
             TaskPlayAnimAdvanced(PlayerPedId(), "mech_crawl@base", "onfront_fwd", GetEntityCoords(PlayerPedId()), 0.0, 0.0, GetEntityHeading(PlayerPedId()), 1.0, 1.0, 1.0, 1, 1.0, 0, 0)
@@ -61,6 +57,7 @@ function ProneMovement()
             TaskPlayAnimAdvanced(PlayerPedId(), "mech_crawl@base", "onfront_fwd", GetEntityCoords(PlayerPedId()), 0.0, 0.0, GetEntityHeading(PlayerPedId()), 1.0, 1.0, 1.0, 2, 1.0, 0, 0)
             movefwd = false
         end 
+        
         if IsControlJustPressed(0, 0xD27782E3) and not movebwd then
             movebwd = true
             TaskPlayAnimAdvanced(PlayerPedId(), "mech_crawl@base", "onfront_bwd", GetEntityCoords(PlayerPedId()), 0.0, 0.0, GetEntityHeading(PlayerPedId()), 1.0, 1.0, 1.0, 1, 1.0, 0, 0)
@@ -68,6 +65,7 @@ function ProneMovement()
             TaskPlayAnimAdvanced(PlayerPedId(), "mech_crawl@base", "onfront_bwd", GetEntityCoords(PlayerPedId()), 0.0, 0.0, GetEntityHeading(PlayerPedId()), 1.0, 1.0, 1.0, 2, 1.0, 0, 0)
             movebwd = false
         end
+
         if IsControlPressed(0, 0x7065027D) then
             SetEntityHeading(ped, GetEntityHeading(ped)+2.0 )
         elseif IsControlPressed(0, 0xB4E465B4) then
